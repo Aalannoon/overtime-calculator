@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canada Overtime Pay Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Canada overtime pay calculator">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <input type="number" id="rate" placeholder="Hourly rate">
+  <input type="number" id="regular" placeholder="Regular hours">
+  <input type="number" id="overtime" placeholder="Overtime hours">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+function calculate() {
+  const rate = parseFloat(document.getElementById("rate").value) || 0;
+  const regular = parseFloat(document.getElementById("regular").value) || 0;
+  const overtime = parseFloat(document.getElementById("overtime").value) || 0;
+
+  const regularPay = rate * regular;
+  const overtimePay = rate * 1.5 * overtime;
+  const totalPay = regularPay + overtimePay;
+
+  document.getElementById("output").innerHTML =
+    "Regular: $" + regularPay.toFixed(2) + "<br>" +
+    "Overtime: $" + overtimePay.toFixed(2) + "<br>" +
+    "Total: $" + totalPay.toFixed(2);
+}
+</script>
+
+</body>
+</html>
